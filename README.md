@@ -16,7 +16,7 @@ This could be also done with shell scripts and systemd services but I want to le
 ## Non-goals
 - Desired state management like Ansible
 - Persistent workflow execution
-- A vast collection of actions to execute, actions are just shell commands at this point
+- A vast collection of actions to execute, actions are just shell commands at this point except for a few built-ins like 'if'.
 
 # Yaml format
 Yaml is an okay format for configuring workflows IMHO, as long as it doesn't get bloated like Kubernetes configuration files and you have to learn 800 concepts first. This is why I try to incorporate a minimalism first approach here.
@@ -65,3 +65,9 @@ steps:
 ```
 
 Outputs "Workflow testflow/r4gb498q executes in /tmp/shellflow/testflow/r4gb498q". The folder gets deleted after the execution in the default configuration, although this can be configured otherwise of course.
+
+# Ideas
+- Enable/disable workflows: `sf enable testflow.yaml`
+- Keep instance folders with a configuration like `keepWorkingDirectory: always` (or on-error, on-success...)
+- Get status of a workflow or all workflows via `sf status`, `sf status testflow` or `sf status testflow/r4gb498q`
+- Use configured default shell syntax for "if" instead of javascript interpreter: 'if' basically is 'execute this, when 0 then ... else ... via '[[ ... ]]'
