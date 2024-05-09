@@ -21,4 +21,4 @@
 go.work
 
 # Main binary
-./shellflow
+shellflow
